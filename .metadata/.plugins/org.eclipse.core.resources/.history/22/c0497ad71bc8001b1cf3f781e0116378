@@ -1,0 +1,40 @@
+package module5;
+
+import java.sql.SQLException;
+
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableView;
+
+public class MovieController {
+	
+	public MovieController() throws SQLException{
+		
+	}
+	
+    @FXML
+    private Button startButton;
+
+    @FXML
+    private Button addButton;
+    
+    @FXML
+    private TableView<Movie> movieGrid;
+
+    @FXML
+    void startButtonPressed(ActionEvent event) throws SQLException {
+    	
+    	//play(Turn.PAPER);
+    }
+
+    @FXML
+    void addButtonPressed(ActionEvent event) {
+    	//play(Turn.SCICCORS);
+    }
+
+}

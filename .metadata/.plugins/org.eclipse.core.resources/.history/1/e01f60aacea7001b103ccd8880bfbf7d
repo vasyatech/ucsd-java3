@@ -1,0 +1,14 @@
+package GuestBook;
+
+public class Contact implements Comparable<Contact>{
+
+	private String firstName, lastName, address, phone;
+	
+	@Override
+	public int compareTo(Contact o) {
+		if (this.firstName.equals(o.firstName) == true)
+			return 0;
+		else		
+		    return -1;
+	}
+}

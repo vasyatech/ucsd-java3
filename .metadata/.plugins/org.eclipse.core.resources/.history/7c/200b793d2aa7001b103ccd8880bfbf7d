@@ -1,0 +1,38 @@
+package GuestBook;
+
+import java.awt.GridLayout;
+
+import javax.swing.*;
+
+public class ContactViewController {
+	private JFrame frame = new JFrame();
+	private JPanel panel = new JPanel();
+	private JButton button = new JButton();	
+
+	public ContactViewController() {
+		super();
+		show();
+	}
+	public void show() {
+		frame.setVisible(true);
+		frame.add(panel);
+		JLabel firstNameLabel = new JLabel("First Name");
+		JLabel lastNameLabel = new JLabel("Last Name");
+		JLabel addressLabel = new JLabel("Address");
+		JLabel phoneLabel = new JLabel("Phone");
+		JTextField firstNameTextField = new JTextField("");
+		firstNameTextField.setBounds(50,100, 200,30);  
+		panel.add(firstNameLabel);
+		panel.add(firstNameTextField);
+		panel.add(lastNameLabel);
+		//panel.add();
+		panel.add(addressLabel);
+		//panel.add();
+		panel.add(phoneLabel);
+		//panel.add();
+		panel.add(button);
+		button.setText("Submit");
+		//panel.setLayout(new GridLayout(0,3));
+		frame.pack();
+	}
+}

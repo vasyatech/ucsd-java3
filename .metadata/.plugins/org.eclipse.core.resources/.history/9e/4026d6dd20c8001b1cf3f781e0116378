@@ -1,0 +1,98 @@
+package module5;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+public class MovieQueries {
+	private static final String URL = "jdbc:derby:Example;create=true";
+
+	private Connection connection;
+	private ResultSet res = null;
+	List<Movie> movies;
+	//private PreparedStatement preparedStatement ;
+
+	public MovieQueries() {
+		try {
+			System.out.println("Connecting to database URL: " + URL);
+			connection = DriverManager.getConnection(URL);
+			
+			System.out.println("Creating Example prepareStatement");
+			Statement stmt = connection.createStatement();
+			try {
+			    res = stmt.executeQuery("Select * From movies");
+			}
+			catch (SQLException sqlException) {
+				resetExampleDatabase();
+				res = stmt.executeQuery("Select * From movies");
+			}
+			
+            while (res.next()) {
+            	 System.out.println(
+            	           "  " + res.getInt("id")
+            	           + ", " + res.getString("name")
+            	           + ", " + res.getInt("rating")
+            	           + ", " + res.getString("description"));
+            }
+
+		} catch (SQLException sqlException) {
+			sqlException.printStackTrace();
+		}
+	}
+	
+	public int getNextId() throws SQLException {
+		try {
+			Statement stmt = connection.createStatement();
+			res = stmt.executeQuery("Select max(id) maxId From movies");
+			res.next();
+			return res.getInt("maxId") + 1;
+		} catch (SQLException sqlException) {
+			sqlException.printStackTrace();
+		}
+		return 0;
+	}
+	
+	ObservableList<Movie> getMovies() throws SQLException{
+		Statement stmt = connection.createStatement();
+		res = stmt.executeQuery("Select * From movies");
+		movies = new ArrayList<Movie>();
+		//movies.clear();
+		while (res.next()) {
+			Movie movie = new Movie();
+			movie.setId(res.getInt("id"));
+			movie.setName(res.getString("name"));
+			movie.setRating(res.getInt("rating"));
+			movie.setDescription(res.getString("description"));
+			movies.add(movie);
+		}
+		ObservableList<Movie> observableList = FXCollections.observableList(movies);
+		return observableList;
+	}
+	
+	void resetExampleDatabase() {
+		Statement stmt = null;
+		try {
+			stmt = connection.createStatement();
+			stmt.execute("DROP TABLE movies"); 
+			System.out.println("Creating Table - This will throw an exception if the table is already created.");
+			stmt.execute("CREATE TABLE movies (" + "id INTEGER PRIMARY KEY," + "name VARCHAR(255)," + "rating INTEGER,"+ "description VARCHAR(255))");
+			System.out.println("adding values into movies table");
+			stmt.executeUpdate("INSERT INTO movies VALUES (1, 'Maleficent', 7, '2014 Fantasy/Adventure 1h 38m')");
+			stmt.executeUpdate("INSERT INTO movies VALUES (2, 'Elvira: Mistress of the Dark', 6, '1988 Comedy/Horror 1h 36m')");
+		} catch (SQLException sqlException) {
+			sqlException.printStackTrace();
+		}
+
+	}
+
+	public void close() {
+		try {
+			connection.close();
+		} catch (SQLException sqlExeption) {
+			sqlExeption.printStackTrace();
+		}
+	}
+}

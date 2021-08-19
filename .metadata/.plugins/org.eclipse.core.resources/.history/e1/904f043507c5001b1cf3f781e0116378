@@ -1,0 +1,40 @@
+package module5;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class Movie {
+	private IntegerProperty id;
+    public void setId(int value) { idProperty().set(value); }
+    public int getId() { return idProperty().get(); }
+    public IntegerProperty idProperty() { 
+        if (id == null) id = new SimpleIntegerProperty(this, "id");
+        return id; 
+    }
+    
+	private StringProperty name;
+    public void setFirstName(String value) { nameProperty().set(value); }
+    public String getName() { return nameProperty().get(); }
+    public StringProperty nameProperty() { 
+        if (name == null) name = new SimpleStringProperty(this, "name");
+        return name; 
+    }
+
+	private IntegerProperty raiting;
+    public void setRaiting(int value) { raitingProperty().set(value); }
+    public int getRaiting() { return raitingProperty().get(); }
+    public IntegerProperty raitingProperty() { 
+        if (raiting == null) raiting = new SimpleIntegerProperty(this, "raiting");
+        return raiting; 
+    }
+    
+    private StringProperty description;
+    public void setLastName(String value) { descriptionProperty().set(value); }
+    public String getLastName() { return descriptionProperty().get(); }
+    public StringProperty descriptionProperty() { 
+        if (description == null) description = new SimpleStringProperty(this, "description");
+        return description; 
+    } 
+}

@@ -1,0 +1,21 @@
+package GuestBook;
+
+import javax.swing.*;
+
+public class ContactViewController {
+	private JFrame frame = new JFrame();
+	private JPanel panel = new JPanel();
+	private JButton button = new JButton();	
+
+	public ContactViewController() {
+		super();
+		show();
+	}
+	public void show() {
+		frame.setVisible(true);
+		frame.add(panel);
+		panel.add(button);
+		button.setText("Submit");
+		frame.pack();
+	}
+}

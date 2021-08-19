@@ -1,0 +1,11 @@
+1622789151035	Rename resource 'GameController.java'
+1622789370336	Delete element
+1622789373199	Delete element
+1622789402369	Delete element
+1622790883177	Rename field 'firstName'
+1622790906161	Rename method 'firstNameProperty'
+1622790926402	Rename field 'lastName'
+1622790948491	Rename method 'lastNameProperty'
+1622791970743	Rename method 'getFirstName'
+1622793719348	Rename local variable 'firstNameCol'
+1622793760458	Rename local variable 'lastNameCol'

@@ -1,0 +1,52 @@
+package GuestBook;
+
+import java.awt.GridLayout;
+
+import javax.swing.*;
+
+public class ContactViewController {
+	private JFrame frame = new JFrame();
+	private JPanel panel1 = new JPanel();
+	private JPanel panel2 = new JPanel();
+	private JButton button = new JButton();	
+
+	public ContactViewController() {
+		super();
+		show();
+	}
+	public void show() {
+		frame.setSize(400, 300);
+		frame.setResizable(true);
+		frame.setVisible(true);
+		frame.add(panel1);
+		frame.add(panel2);
+		JLabel firstNameLabel = new JLabel("First Name");
+		firstNameLabel.setHorizontalTextPosition(JLabel.RIGHT);
+		JLabel lastNameLabel = new JLabel("Last Name");
+		JLabel addressLabel = new JLabel("Address");
+		JLabel phoneLabel = new JLabel("Phone");
+		JTextField firstNameTextField = new JTextField();
+		JTextField lastNameTextField = new JTextField();
+		JTextField addressNameTextField = new JTextField(20);
+		JTextField phoneNameTextField = new JTextField(20);
+		JTextArea textArea = new JTextArea(6, 100);
+		JScrollPane scrollPane = new JScrollPane(textArea); 
+		textArea.setEditable(false);
+		//firstNameTextField.setBounds(50,100, 200,30);  
+		frame.setLayout(new GridLayout(0,2));
+		panel1.add(firstNameLabel);
+		panel1.add(firstNameTextField);
+		panel1.add(lastNameLabel);
+		panel1.add(lastNameTextField);
+		panel1.add(addressLabel);
+		panel1.add(addressNameTextField);
+		panel1.add(phoneLabel);
+		panel1.add(phoneNameTextField);
+		panel1.add(button);
+		button.setText("Submit");
+		panel1.setLayout(new GridLayout(0,2));
+		panel2.add(textArea);
+		frame.setSize(800,400);  
+		frame.pack();
+	}
+}

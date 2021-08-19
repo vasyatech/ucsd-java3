@@ -1,0 +1,75 @@
+package GuestBook;
+
+import java.awt.GridLayout;
+
+import javax.swing.*;
+
+public class ContactViewController {
+	private JFrame frame = new JFrame();
+	private JButton button = new JButton();	
+
+	public ContactViewController() {
+		super();
+		show();
+	}
+	public void show() {
+		frame.setSize(400, 300);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		JPanel leftPanel = new JPanel();
+		JPanel rightPanel = new JPanel();
+		JPanel rowPanel1 = new JPanel();
+		JPanel rowPanel2 = new JPanel();
+		JPanel rowPanel3 = new JPanel();
+		JPanel rowPanel4 = new JPanel();
+		JPanel rowPanel5 = new JPanel();
+		frame.add(leftPanel);
+		frame.add(rightPanel);
+		frame.setLayout(new GridLayout(0,2));
+		
+		JLabel firstNameLabel = new JLabel("First Name");
+		firstNameLabel.setHorizontalTextPosition(JLabel.RIGHT);
+		JLabel lastNameLabel = new JLabel("Last Name");
+		JLabel addressLabel =  new JLabel("Address");
+		JLabel phoneLabel =    new JLabel("Phone");
+		phoneLabel.setHorizontalTextPosition(JLabel.RIGHT);
+		JTextField firstNameTextField = new JTextField(20);
+		JTextField lastNameTextField = new JTextField(20);
+		JTextField addressNameTextField = new JTextField(20);
+		JTextField phoneNameTextField = new JTextField(20);
+		JTextArea textArea = new JTextArea(6, 100);
+		JScrollPane scrollPane = new JScrollPane(textArea); 
+		textArea.setEditable(false);
+		//firstNameTextField.setBounds(50,100, 200,30);  
+		
+		rowPanel1.add(firstNameLabel);
+		rowPanel1.add(firstNameTextField);
+		leftPanel.add(rowPanel1);
+		
+		rowPanel2.add(lastNameLabel);
+		rowPanel2.add(lastNameTextField);
+		leftPanel.add(rowPanel2);
+		
+		rowPanel3.add(addressLabel);
+		rowPanel3.add(addressNameTextField);
+		leftPanel.add(rowPanel3);
+		
+		rowPanel4.add(phoneLabel);
+		rowPanel4.add(phoneNameTextField);
+		leftPanel.add(rowPanel4);
+		
+		leftPanel.setLayout(new GridLayout(0,1));
+		
+//		panel1.add();
+//		panel1.add(addressLabel);
+//		panel1.add(addressNameTextField);
+//		panel1.add(phoneLabel);
+//		panel1.add(phoneNameTextField);
+//		panel1.add(button);
+//		button.setText("Submit");
+//		panel1.setLayout(new GridLayout(0,2));
+//		panel2.add(textArea);
+		frame.setSize(800,400);  
+		frame.pack();
+	}
+}

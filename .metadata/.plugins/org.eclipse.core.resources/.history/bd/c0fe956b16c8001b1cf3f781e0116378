@@ -1,0 +1,68 @@
+package module5;
+
+import java.sql.SQLException;
+
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableView;
+
+public class MovieController {
+
+    @FXML
+    private TextArea resultText;
+
+    @FXML
+    private Button paperButton;
+
+    @FXML
+    private Button rockButton;
+
+    @FXML
+    private Button scissorsButton;
+    
+    @FXML
+    private TableView<Movie> movieGrid;
+
+    @FXML
+    void paperButtonPressed(ActionEvent event) throws SQLException {
+    	MovieQueries example = new MovieQueries();
+
+    	ObservableList<Movie> movies = example.getMovies();
+    	movieGrid.setItems(movies);
+    	
+    	TableColumn<Movie,String> nameCol = new TableColumn<Movie,String>("Name");
+    	 nameCol.setCellValueFactory(new PropertyValueFactory("name"));
+    	 
+     	TableColumn<Movie,Integer> raitingCol = new TableColumn<Movie,Integer>("Raiting");
+     	raitingCol.setCellValueFactory(new PropertyValueFactory("raiting"));
+     		
+     	TableColumn<Movie,String> descriptionCol = new TableColumn<Movie,String>("Description");
+    	 descriptionCol.setCellValueFactory(new PropertyValueFactory("description"));
+    	 
+    	 movieGrid.getColumns().setAll(nameCol, descriptionCol);
+    	 movieGrid.refresh();
+    	//play(Turn.PAPER);
+    }
+
+    @FXML
+    void rockButtonPressed(ActionEvent event) {
+    	//play(Turn.ROCK);
+    }
+
+    @FXML
+    void scissorsButtonPressed(ActionEvent event) {
+    	//play(Turn.SCICCORS);
+    }
+    
+   /* void play(Turn playerTurn) {
+    	GameModel gameModel = new GameModel();
+    	gameModel.calculateOutcome(playerTurn);
+    	resultText.setText(gameModel.getOutcome());
+    }*/
+
+}
